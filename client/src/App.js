@@ -16,8 +16,6 @@ import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
 import Performance from "scenes/performance";
-import RequireAuth from "./middleware/RequireAuth";
-import RedirectIfAuthenticated from "./middleware/RedirectIfAuthenticated";
 import Login from "scenes/login";
 
 function App() {
