@@ -16,43 +16,43 @@ export const api = createApi({
   ],
     endpoints: (build) => ({
       getUser: build.query({
-        query: (id) => `general/user/${id}`,
+        query: (id) => `http://localhost:5001/general/user/${id}`,
         providesTags: ["User"],
       }),
       getProducts: build.query({
-        query: () => "client/products",
+        query: () => "http://localhost:5001/client/products",
         providesTags: ["Products"],
       }),
       getCustomers: build.query({
-        query: () => "client/customers",
+        query: () => "http://localhost:5001/client/customers",
         providesTags: ["Customers"],
       }),
       getTransactions: build.query({
         query: ({ page, pageSize, sort, search }) => ({
-          url: "client/transactions",
+          url: "http://localhost:5001/client/transactions",
           method: "GET",
           params: { page, pageSize, sort, search },
         }),
         providesTags: ["Transactions"],
       }),
       getGeography: build.query({
-        query: () => "client/geography",
+        query: () => "http://localhost:5001/client/geography",
         providesTags: ["Geography"],
       }),
       getSales: build.query({
-        query: () => "sales/sales",
+        query: () => "http://localhost:5001/sales/sales",
         providesTags: ["Sales"],
       }),
       getAdmins: build.query({
-        query: () => "management/admins",
+        query: () => "http://localhost:5001/management/admins",
         providesTags: ["Admins"],
       }),
       getUserPerformance: build.query({
-        query: (id) => `management/performance/${id}`,
+        query: (id) => `http://localhost:5001/management/performance/${id}`,
         providesTags: ["Performance"],
       }),
       getDashboard: build.query({
-        query: () => "general/dashboard",
+        query: () => "http://localhost:5001/general/dashboard",
         providesTags: ["Dashboard"],
       }),
 
