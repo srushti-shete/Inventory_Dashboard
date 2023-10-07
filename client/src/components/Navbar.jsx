@@ -59,8 +59,8 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </IconButton>
           <FlexBetween
             backgroundColor={theme.palette.background.alt}
-            borderRadius="9px"
-            gap="3rem"
+            borderRadius="35px"
+            gap="10rem"
             p="0.1rem 1.5rem"
           >
             <InputBase placeholder="Search..." />
@@ -71,7 +71,7 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </FlexBetween>
 
         {/* RIGHT SIDE */}
-        <FlexBetween gap="1.5rem">
+        <FlexBetween gap="0.5rem">
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
@@ -91,21 +91,15 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 textTransform: "none",
-                gap: "3rem",
+                gap: "1rem",
               }}
             >
               <Box
                 component="div"
-                // alt="profile"
-                // src={profileImage}
-                // height="32px"
-                // width="32px"
-                // borderRadius="50%"
-                // sx={{ objectFit: "cover" }}
               />
               {user && (
                 <Box textAlign="left">
-                  <Typography variant="h5" color={theme.palette.secondary[300]}>
+                  <Typography variant="h6" color={theme.palette.secondary[300]}>
                     {user.email}
                   </Typography>
                 </Box>
