@@ -37,7 +37,7 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const handleClose = () => setAnchorEl(null);
   const { logout } = useLogout()
   const { user } = useAuthContext();
-  // console.log(user)
+  console.log(user.email)
 
   const handleLogout = () => {
     logout()
@@ -106,7 +106,7 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               {user && (
                 <Box textAlign="left">
                   <Typography variant="h5" color={theme.palette.secondary[300]}>
-                    {user.name}
+                    {user.email}
                   </Typography>
                 </Box>
               )}
