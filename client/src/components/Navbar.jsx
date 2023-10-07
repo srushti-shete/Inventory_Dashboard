@@ -24,8 +24,10 @@ import {
   useTheme,
 } from "@mui/material";
 import { useLogout } from "hooks/useLogout";
+import { useAuthContext } from 'hooks/useAuthContext'
+import Link from '@mui/material/Link';
 
-const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -34,6 +36,8 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
   const { logout } = useLogout()
+  const { user } = useAuthContext();
+  // console.log(user)
 
   const handleLogout = () => {
     logout()
@@ -87,20 +91,25 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 textTransform: "none",
-                gap: "1rem",
+                gap: "3rem",
               }}
             >
               <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="32px"
-                width="32px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
+                component="div"
+                // alt="profile"
+                // src={profileImage}
+                // height="32px"
+                // width="32px"
+                // borderRadius="50%"
+                // sx={{ objectFit: "cover" }}
               />
-              <Box textAlign="left">
-              </Box>
+              {user && (
+                <Box textAlign="left">
+                  <Typography variant="h5" color={theme.palette.secondary[300]}>
+                    {user.name}
+                  </Typography>
+                </Box>
+              )}
               <ArrowDropDownOutlined
                 sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
               />
@@ -111,7 +120,18 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               onClose={handleClose}
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
-              <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+              {user ? (
+                <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+              ) : (
+                [
+                  <MenuItem key="login">
+                      <Link href="/login" color="inherit" underline="none">Login</Link>
+                    </MenuItem>,
+                  <MenuItem key="signup">
+                    <Link href="/signup" color="inherit" underline="none">Signup</Link>
+                  </MenuItem>,
+                ]
+              )}
             </Menu>
           </FlexBetween>
         </FlexBetween>
