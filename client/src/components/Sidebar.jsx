@@ -32,11 +32,16 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "assets/profile.jpeg";
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 const navItems = [
     {
       text: "Dashboard",
       icon: <HomeOutlined />,
+    },
+    {
+      text: "About-Us",
+      icon: <PersonOutlineOutlinedIcon />,
     },
     {
       text: "Client Facing",

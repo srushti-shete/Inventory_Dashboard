@@ -19,6 +19,7 @@ import Performance from "scenes/performance";
 import Login from "scenes/login";
 import Signup from "scenes/signup";
 import { useAuthContext } from 'hooks/useAuthContext'
+import About from 'scenes/about'
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -44,6 +45,7 @@ function App() {
               <Route path="/admin" element={<Admin />} />
               <Route path="/performance" element={<Performance />} />
             </Route>
+            <Route path="/about-us" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
