@@ -13,11 +13,12 @@ import {
 } from "@mui/material";
 import { useLogin } from "hooks/useLogin";
 import Alert from '@mui/material/Alert';
+import Link from '@mui/material/Link';
 
 const Login = () => {
   
   const theme = useTheme();
-
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {login, error, isLoading} = useLogin()
@@ -30,7 +31,7 @@ const Login = () => {
 
   return (
     <Box
-      m="1.5rem 2rem"
+      m="5rem 2rem"
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -115,6 +116,19 @@ const Login = () => {
             >
               Login
             </Button>
+            <Typography 
+              component="h4" 
+              variant="h6"
+              sx={{
+                backgroundColor: theme.palette.background.alt,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Don't have an account? <Link href="/signup" color={theme.palette.secondary[300]} underline="none">Create one</Link>        
+            </Typography>
             {error && 
               <Alert severity="error">{error} — check it out!</Alert>
             }

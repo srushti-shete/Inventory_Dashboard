@@ -17,6 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useSignup } from "../../hooks/useSignup"
 import Alert from '@mui/material/Alert';
+import Link from '@mui/material/Link';
 
 const Signup = () => {
   
@@ -31,7 +32,6 @@ const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [role, setRole] = useState('')
   const {signup, error, isLoading} = useSignup()
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -42,7 +42,7 @@ const Signup = () => {
 
   return (
     <Box
-      m=" 4rem 20rem"
+      m="2rem 20rem"
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -241,11 +241,34 @@ const Signup = () => {
                     Signup
                 </Button>
               </Grid>
-              {error && 
-                <Alert severity="error" sx={{ mt: "1rem", ml:"1rem" }}>{error} — check it out!</Alert>
-              }
             </Grid>
-            
+              {error && 
+                <Alert 
+                  severity="error" 
+                  sx= {{ 
+                    mt: "1rem",
+                    justifyContent: "center",
+                    alignItems: "center", 
+                  }}
+                  fullWidth
+                >
+                  {error} — check it out!
+                </Alert>
+              }
+              <Typography 
+                component="h4" 
+                variant="h6"
+                sx={{
+                  mt: "1rem",
+                  backgroundColor: theme.palette.background.alt,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Already have an account? <Link href="/login" color={theme.palette.secondary[300]} underline="none">Login</Link>        
+              </Typography>
           </Box>
         </Box>
       </Box>

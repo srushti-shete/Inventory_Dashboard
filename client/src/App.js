@@ -17,19 +17,29 @@ import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
 import Performance from "scenes/performance";
 import Login from "scenes/login";
+import Signup from "scenes/signup";
+import { useAuthContext } from 'hooks/useAuthContext'
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const { user } = useAuthContext();
+
+  // Define a function to conditionally render the protected component
+  const renderProtectedRoute = (element) => {
+    return user ? element : <Navigate to="/login" />;
+  };
+
   return (
     <div className="App">
-       <BrowserRouter>
-       <ThemeProvider theme = {theme}>
-          <CssBaseline/>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
           <Routes>
-          <Route path="/" element={<RedirectIfAuthenticated Component={Login} />} />
-          <Route element={<RequireAuth Component={Layout} />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={user ? <Layout /> : <Navigate to="/login" />}>
+              <Route index element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
@@ -44,7 +54,7 @@ function App() {
             </Route>
           </Routes>
         </ThemeProvider>
-        </BrowserRouter>
+      </BrowserRouter>
     </div>
   );
 }
