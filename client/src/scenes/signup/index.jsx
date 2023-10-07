@@ -14,7 +14,9 @@ import {
 } from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
+import { useSignup } from "../../hooks/useSignup"
+import Alert from '@mui/material/Alert';
 
 const Signup = () => {
   
@@ -28,11 +30,14 @@ const Signup = () => {
   const [occupation, setOccupation] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [role, setRole] = useState('')
+  const {signup, error, isLoading} = useSignup()
   
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(name, email, password, city, state, country, occupation, phoneNumber, role)
+    // console.log(name, email, password, city, state, country, occupation, phoneNumber, role)
+    // await signup(name, email, password, city, state, country, occupation, phoneNumber, role)
+    await signup(name, email, password, city, state, country, occupation, phoneNumber, role)
   }
 
   return (
@@ -231,10 +236,14 @@ const Signup = () => {
                         "&:hover": { backgroundColor: theme.palette.primary[300]} 
                         }}
                     onClick={handleSubmit}
+                    disabled={isLoading}
                     >
                     Signup
                 </Button>
               </Grid>
+              {error && 
+                <Alert severity="error" sx={{ mt: "1rem", ml:"1rem" }}>{error} — check it out!</Alert>
+              }
             </Grid>
             
           </Box>
