@@ -11,6 +11,8 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
+import { useLogin } from "hooks/useLogin";
+import Alert from '@mui/material/Alert';
 
 const Login = () => {
   
@@ -18,10 +20,12 @@ const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const {login, error, isLoading} = useLogin()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(email, password)
+    // console.log(email, password)
+    await login(email, password)
   }
 
   return (
@@ -107,9 +111,13 @@ const Login = () => {
                 "&:hover": { backgroundColor: theme.palette.primary[300]} 
                   }}
               onClick={handleSubmit}
+              disabled={isLoading}
             >
               Login
             </Button>
+            {error && 
+              <Alert severity="error">{error} — check it out!</Alert>
+            }
           </Box>
         </Box>
       </Box>
