@@ -11,11 +11,6 @@ const Admin = () => {
 
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
-      flex: 1,
-    },
-    {
       field: "name",
       headerName: "Name",
       flex: 0.5,

@@ -24,18 +24,13 @@ const Transactions = () => {
 
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
-      flex: 1,
-    },
-    {
       field: "userId",
       headerName: "User ID",
       flex: 1,
     },
     {
       field: "createdAt",
-      headerName: "CreatedAt",
+      headerName: "Bought At",
       flex: 1,
     },
     {
@@ -47,7 +42,7 @@ const Transactions = () => {
     },
     {
       field: "cost",
-      headerName: "Cost",
+      headerName: "Price",
       flex: 1,
       renderCell: (params) => `₹${Number(params.value).toFixed(2)}`,
     },
