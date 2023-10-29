@@ -12,11 +12,11 @@ const Performance = () => {
   const { data, isLoading } = useGetUserPerformanceQuery(userId);
 
   const columns = [
-    {
-      field: "_id",
-      headerName: "ID",
-      flex: 1,
-    },
+    // {
+    //   field: "_id",
+    //   headerName: "ID",
+    //   flex: 1,
+    // },
     {
       field: "userId",
       headerName: "User ID",
@@ -29,8 +29,8 @@ const Performance = () => {
     },
     {
       field: "products",
-      headerName: "# of Products",
-      flex: 0.5,
+      headerName: "Number of Products",
+      flex: 1,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
